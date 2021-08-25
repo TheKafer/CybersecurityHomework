@@ -52,6 +52,16 @@ app.delete('/products/:id', (req, res) => {
     res.sendStatus(200);
 });
 
+app.get('/products/:id', (req, res) => {
+    const productId = req.params.id;
+    connection.query(`SELECT * FROM product where id=${productId}`, function(err, result) {
+        if (err) throw err;
+        res.json({
+            product: result
+        });
+    });
+});
+
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`)
 });
