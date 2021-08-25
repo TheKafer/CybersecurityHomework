@@ -31,6 +31,27 @@ app.get('/products', (req, res) => {
     });
 });
 
+app.post('/products', (req, res) => {
+    const { product } = req.body;
+    connection.query(`INSERT INTO cibersecurity.product (title, price, description, image) VALUES (
+        '${product.title}',
+        ${product.price},
+        '${product.description}',
+        '${product.image}'
+    );`, function(err, result) {
+        if (err) throw err;
+    });
+    res.sendStatus(200);
+});
+
+app.delete('/products/:id', (req, res) => {
+    const productId = req.params.id;
+    connection.query(`DELETE FROM product WHERE id=${productId}`, function(err, result) {
+        if (err) throw err;
+    });
+    res.sendStatus(200);
+});
+
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`)
 });
