@@ -1,0 +1,54 @@
+<button mat-raised-button routerLink="/admin/products/create">
+  Crear Nuevo Producto
+</button>
+<table
+  mat-table
+  [dataSource]="products"
+  class="mat-elevation-z8 products-table"
+>
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+  </ng-container>
+
+  <!-- Title Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let product">{{ product.title }}</td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let product">
+      {{ product.price | currency: "USD":"symbol":"1.2-2" }}
+    </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let product">
+      <button
+        mat-raised-button
+        [routerLink]="['/admin/products/edit', product.id]"
+      >
+        Editar
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteProduct(product.id)"
+      >
+        Eliminar
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
