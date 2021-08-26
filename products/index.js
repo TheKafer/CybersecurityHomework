@@ -9,8 +9,8 @@ let mysql = require("mysql");
 
 let connection = mysql.createConnection({
   host: "localhost",
-  user: "santi",
-  password: "asdf",
+  user: "root",
+  password: "",
   database: "cibersecurity",
 });
 
@@ -83,7 +83,7 @@ app.get("/products/:id", (req, res) => {
   connection.query(
     `SELECT * FROM product where id=${productId}`,
     function (err, result) {
-      if (err) throw err;
+      if (err);
       res.json({
         product: result,
       });
@@ -91,6 +91,6 @@ app.get("/products/:id", (req, res) => {
   );
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Listening on port: ${port}`);
 });

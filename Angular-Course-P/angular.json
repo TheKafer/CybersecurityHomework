@@ -150,6 +150,7 @@
   },
   "defaultProject": "platzi-store",
   "cli": {
+    "analytics": "d6efe24f-7a2b-4b17-8cfe-b392375a832f",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }
