@@ -25,7 +25,7 @@ export class ProductComponent implements OnInit, OnDestroy, DoCheck {
 
   constructor() {
     this.productClicked = new EventEmitter();
-    // console.log('1. Constructor');
+    // console.log(this.product);
   }
 
   // ngOnChanges(changes: SimpleChanges) {

@@ -1,4 +1,4 @@
-<div *ngIf="product">
+<div *ngFor="let product of products">
   <div><img [src]="product.image" [alt]="product.title" /></div>
   <div>
     <ul>

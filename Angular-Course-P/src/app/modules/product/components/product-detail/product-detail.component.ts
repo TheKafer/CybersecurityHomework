@@ -9,7 +9,7 @@ import { ProductsService } from '../../../core/services/products/products.servic
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product;
+  products: any[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,8 +24,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   fetchProduct(id: string) {
-    this.productsService.getProduct(id).subscribe((product) => {
-      this.product = product;
+    this.productsService.getProduct(id).subscribe((products) => {
+      console.log(products);
+      this.products = products;
     });
   }
 
